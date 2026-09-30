@@ -8,13 +8,6 @@ import java.util.function.Supplier;
 
 public class Start {
     public static void main(String[] args) throws Exception {
-        /*OperationMaker maker = new OperationMaker();
-        maker.datareader = new DataReader();
-        maker.printer = new Printer();
-        maker.operations.put("+", new MinusOperation());
-        maker.operations.put("-", new PlusOperation());
-        maker.make();*/
-
         Register register = new Register();
         register.reg(Supplier.class, new DataReader());
         register.reg(Consumer.class, new Printer());
