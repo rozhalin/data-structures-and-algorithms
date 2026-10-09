@@ -36,4 +36,23 @@ public class OrderServiceTest {
         Double result = OrderService.calc(items, Type.NEW);
         assertEquals(5958.75d, result);
     }
+
+    @Test
+    void testOnePercentDiscountWhenOver10Items() {
+        List<Item> items = new ArrayList<>();
+        items.add(new Item("item1", 1d, 1));
+        items.add(new Item("item2", 2d, 1));
+        items.add(new Item("item3", 3d, 1));
+        items.add(new Item("item4", 4d, 1));
+        items.add(new Item("item5", 5d, 1));
+        items.add(new Item("item6", 6d, 1));
+        items.add(new Item("item7", 7d, 1));
+        items.add(new Item("item8", 8d, 1));
+        items.add(new Item("item9", 9d, 1));
+        items.add(new Item("item10", 10d, 1));
+        items.add(new Item("item11", 11d, 1));
+
+        Double result = OrderService.calc(items, Type.NEW);
+        assertEquals(62.04d, result);
+    }
 }
