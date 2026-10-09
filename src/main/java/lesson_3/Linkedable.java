@@ -7,11 +7,11 @@ public interface Linkedable<T> {
 
     void addFirst(T value);
     void addLast(T value);
-    void addAt(int position, T value);
+    void addAfter(Node<T> node, T value);
 
     T removeFirst();
     T removeLast();
-    T removeAt(int position);
+    T remove(Node<T> node);
 
     T get(int position);
     void set(int position, T value);
