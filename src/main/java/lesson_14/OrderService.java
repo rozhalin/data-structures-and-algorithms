@@ -19,24 +19,18 @@ public class OrderService {
      * @param type тип заказа; допустимые значения: {@code "VIP"}, {@code "NEW"}
      * @return сумма цен всех предметов с учетом применимой скидки
      */
-    public double calc(List<Item> items, String type) {
-        double s = 0;
+    public static double calc(List<Item> items, Type type) {
+        double sum = 0;
         for (Item i : items) {
-            s += i.getPrice() * i.getQuantity();
+            sum += i.getPrice() * i.getQuantity();
         }
 
-        if (type.equals("VIP")) {
-            s = s * 0.9;
+        sum = sum * (1. - type.getDiscount());
+
+        if (sum > 1000) {
+            sum = sum - 50;
         }
 
-        if (type.equals("NEW")) {
-            s = s * 0.95;
-        }
-
-        if (s > 1000) {
-            s = s - 50;
-        }
-
-        return s;
+        return sum;
     }
 }
